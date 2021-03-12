@@ -8,10 +8,8 @@ class EnergyData(HouseInfo):
 
     def _get_energy(self, rec):
         energy = int(rec, base=16)
-        #Isolate the energy bits by "anding" the energy integer with the ENERGY_BITS constant.
-        # This operation should clear all the bits from the first and third nibble.
-        # Assign the result back to energy.
-        # Then, right shift energy by four bits. Assign the result back to energy
+        energy = energy & self.ENERGY_BITS
+        energy = energy >> 4
         return energy
 
     def _convert_data(self, data):
